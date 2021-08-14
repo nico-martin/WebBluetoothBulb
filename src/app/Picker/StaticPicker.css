@@ -1,0 +1,16 @@
+.root {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.5em;
+  background-color: var(--c-border);
+  border: 0.2em solid var(--c-border);
+  overflow: hidden;
+  text-indent: -99999px;
+  cursor: pointer;
+}

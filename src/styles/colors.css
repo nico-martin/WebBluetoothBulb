@@ -2,8 +2,8 @@
   --c-white: #faf6f5;
   --c-p: #333;
   --c-bluetooth: #287aa9;
-  --c-bkg: #f6f6f6;
-  --c-bkg-dark: #eaeaea;
+  --c-bkg: #4f4f4f;
+  --c-bkg-dark: #3e3d3d;
   --c-bkg-extra-dark: #d9d9d9;
   --c-bkg-light: #fff;
   --c-bkg-close-button-hover: #e2e2e2;
@@ -16,6 +16,7 @@
   --c-feedback: #5480cb;
   --c-feedback-error: #cb3939;
   --c-feedback-success: #206920;
+  --c-light-bulb: #ffe438;
 }
 
 @media (prefers-color-scheme: dark) {

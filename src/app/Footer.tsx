@@ -13,7 +13,15 @@ const Footer = ({ className = '' }: { className?: string }) => {
       <button className={cn(styles.button)} onClick={() => setInfos(true)}>
         <Icon icon="mdi/info" />
       </button>
-      <span className={styles.version}>v{pkg.version}</span>
+      <span className={styles.version}>
+        <a
+          href="https://github.com/nico-martin/WebBluetoothBulb"
+          target="_blank"
+        >
+          WebBluetoothBulb
+        </a>{' '}
+        v{pkg.version}
+      </span>
       <button
         className={cn(styles.button)}
         onClick={() =>
@@ -31,7 +39,7 @@ const Footer = ({ className = '' }: { className?: string }) => {
         <PortalBox close={() => setInfos(false)} title="WebBluetooth Car">
           <div className={styles.info}>
             <p>
-              <b>WebBluetooth Car</b> is a project by{' '}
+              <b>WebBluetooth Bulb</b> is a project by{' '}
               <a href="https://nico.dev" target="_blank">
                 Nico Martin
               </a>
@@ -40,19 +48,12 @@ const Footer = ({ className = '' }: { className?: string }) => {
             <p>
               You can find more about this interface on{' '}
               <a
-                href="https://github.com/nico-martin/WebBluetoothCarUI"
+                href="https://github.com/nico-martin/WebBluetoothBulb"
                 target="_blank"
               >
                 GitHub
-              </a>{' '}
-              as well as the{' '}
-              <a
-                href="https://github.com/nico-martin/WebBluetoothCar"
-                target="_blank"
-              >
-                Bluetooth Car
-              </a>{' '}
-              it was developed for.
+              </a>
+              .
             </p>
             <h2>Privacy</h2>
             <p>This web app does not collect any personal data.</p>

@@ -10,6 +10,7 @@
   font-size: 1.2rem;
   cursor: pointer;
   opacity: 0.6;
+  color: var(--c-white);
   @mixin transition;
 
   &:hover {
@@ -35,4 +36,9 @@
 .version {
   font-size: var(--fs-small);
   color: var(--c-border-dark);
+
+  a {
+    color: var(--c-border-dark);
+    text-decoration: none;
+  }
 }

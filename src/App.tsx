@@ -36,39 +36,36 @@ const App = () => {
     setBleCharLight(null);
   };
 
-  const connect = () => {
+  const connect = async (): Promise<void> => {
     setButtonLoading(true);
-    navigator.bluetooth
-      .requestDevice({
+    try {
+      const device: BluetoothDevice = await navigator.bluetooth.requestDevice({
         //acceptAllDevices: true,
         filters: [{ name: 'PLAYBULB sphere' }],
         optionalServices: [BLE_UUID.SERVICE_LIGHT, BLE_UUID.SERVICE_BATTERY],
-      })
-      .then((device) => {
-        setBleDevice(device);
-        device.addEventListener('gattserverdisconnected', onDisconnected);
-        return device.gatt.connect();
-      })
-      .then((server) =>
-        Promise.all([
-          server.getPrimaryService(BLE_UUID.SERVICE_LIGHT),
-          server.getPrimaryService(BLE_UUID.SERVICE_BATTERY),
-        ])
-      )
-      .then(([serviceMotor, serviceDevice]) =>
-        Promise.all([
-          serviceMotor.getCharacteristic(BLE_UUID.CHAR_LIGHT),
-          serviceDevice.getCharacteristic(BLE_UUID.CHAR_BATTERY_LEVEL),
-        ])
-      )
-      .then(([charLight, charBatteryLevel]) => {
-        setBleCharLight(charLight);
-        setBleCharBatteryLevel(charBatteryLevel);
-      })
-      .catch((error) => {
-        setError(error.toString());
-      })
-      .finally(() => setButtonLoading(false));
+      });
+      setBleDevice(device);
+      device.addEventListener('gattserverdisconnected', onDisconnected);
+      const server = await device.gatt.connect();
+      const serviceLight = await server.getPrimaryService(
+        BLE_UUID.SERVICE_LIGHT
+      );
+      const serviceBattery = await server.getPrimaryService(
+        BLE_UUID.SERVICE_BATTERY
+      );
+
+      const charLight = await serviceLight.getCharacteristic(
+        BLE_UUID.CHAR_LIGHT
+      );
+      const charBatteryLevel = await serviceBattery.getCharacteristic(
+        BLE_UUID.CHAR_BATTERY_LEVEL
+      );
+      setBleCharLight(charLight);
+      setBleCharBatteryLevel(charBatteryLevel);
+    } catch (error) {
+      setError(error.toString());
+    }
+    setButtonLoading(false);
   };
 
   return (

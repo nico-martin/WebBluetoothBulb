@@ -31,6 +31,7 @@
   top: var(--spacing);
   display: flex;
   align-items: center;
+  color: var(--c-white);
 }
 
 .powerOff {
@@ -40,6 +41,7 @@
   height: 4vmin;
   cursor: pointer;
   opacity: 0.6;
+  color: var(--c-white);
   @mixin transition;
 
   &:hover {
