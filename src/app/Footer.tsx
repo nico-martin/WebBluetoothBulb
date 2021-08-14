@@ -36,10 +36,14 @@ const Footer = ({ className = '' }: { className?: string }) => {
         <Icon icon={`mdi/${isFullScreen ? 'fullscreen-exit' : 'fullscreen'}`} />
       </button>
       {infos && (
-        <PortalBox close={() => setInfos(false)} title="WebBluetooth Car">
+        <PortalBox
+          close={() => setInfos(false)}
+          title="WebBluetooth Light Bulb"
+        >
           <div className={styles.info}>
             <p>
-              <b>WebBluetooth Bulb</b> is a project by{' '}
+              <b>WebBluetooth Light Bulb</b> is a web-based UI to control a
+              PLAYBULB sphere over WebBluetooth by{' '}
               <a href="https://nico.dev" target="_blank">
                 Nico Martin
               </a>
