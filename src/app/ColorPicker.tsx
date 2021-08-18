@@ -13,6 +13,13 @@ const ColorPicker = ({
 
   const readColor = async (): Promise<RgbColorI> => {
     const value = await characteristic.readValue();
+    if (value.getUint8(0) === 255) {
+      return {
+        r: 255,
+        g: 255,
+        b: 255,
+      };
+    }
     return {
       r: value.getUint8(1),
       g: value.getUint8(2),
@@ -25,7 +32,11 @@ const ColorPicker = ({
     g: number,
     b: number
   ): Promise<RgbColorI> => {
-    await characteristic.writeValue(new Uint8Array([0x00, r, g, b]));
+    if (r === 255 && g === 255 && b === 255) {
+      await characteristic.writeValue(new Uint8Array([255, 0, 0, 0]));
+    } else {
+      await characteristic.writeValue(new Uint8Array([0, r, g, b]));
+    }
     return await readColor();
   };
 

@@ -14,10 +14,10 @@ const decoder = new TextDecoder();
 const BROWSER_SUPPORT = 'bluetooth' in navigator;
 
 const BLE_UUID = {
-  SERVICE_LIGHT: '0000ff0f-0000-1000-8000-00805f9b34fb',
-  CHAR_LIGHT: '0000fffc-0000-1000-8000-00805f9b34fb',
-  SERVICE_BATTERY: '0000180f-0000-1000-8000-00805f9b34fb',
-  CHAR_BATTERY_LEVEL: '00002a19-0000-1000-8000-00805f9b34fb',
+  SERVICE_LIGHT: 0xff0f,
+  CHAR_LIGHT: 0xfffc,
+  SERVICE_BATTERY: 0x180f,
+  CHAR_BATTERY_LEVEL: 0x2a19,
 };
 
 const App = () => {

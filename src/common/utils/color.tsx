@@ -4,13 +4,15 @@ export interface RgbColorI {
   b: number;
 }
 
-const componentToHex = (c: number): string => {
+const byteToHex = (c: number): string => {
   const hex = c.toString(16);
   return hex.length == 1 ? '0' + hex : hex;
 };
 
+const heyToByte = (hex: string) => {};
+
 export const rgbToHex = (r: number, g: number, b: number): string =>
-  '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  '#' + byteToHex(r) + byteToHex(g) + byteToHex(b);
 
 export const hexToRgb = (hex: string): RgbColorI => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
