@@ -21,7 +21,13 @@ const PlayBulb = ({
 
   return (
     <div className={cn(styles.root, className)}>
-      <div className={cn(styles.bulb)} />
+      <div className={cn(styles.bulbContainer)}>
+        <div className={cn(styles.bulb)}>
+          <div className={styles.bulbShine} />
+          <div className={cn(styles.bulbShadow)} />
+        </div>
+        <div className={cn(styles.bulbStand)} />
+      </div>
       <pre className={cn(styles.desc)}>{hex}</pre>
     </div>
   );

@@ -6,31 +6,98 @@
   align-items: center;
 }
 
-.bulb {
+.bulbContainer {
   width: 50%;
-  border-radius: 50%;
-  background-color: var(--c-light-bulb);
-  border: 1px solid var(--c-white);
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    display: block;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    box-shadow: 0 0 50px var(--c-light-bulb);
-    opacity: 0.5;
-  }
 
   &::after {
     content: '';
     display: block;
     padding-bottom: 100%;
   }
+}
+
+.bulb {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background-color: var(--c-light-bulb);
+  border: 1px solid var(--c-white);
+  position: absolute;
+  transition: background-color 200ms;
+}
+
+.bulbShadow {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 150px var(--c-light-bulb);
+  opacity: 0.5;
+}
+
+.bulbStand {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  border: 1px solid #fff;
+  width: 50%;
+  transform: translateX(-50%) translateY(40%);
+  background: rgb(219, 219, 219);
+  background: linear-gradient(
+    90deg,
+    rgba(219, 219, 219, 0.7) 0%,
+    rgba(207, 207, 207, 1) 7%,
+    rgba(186, 186, 186, 1) 24%,
+    rgba(186, 186, 186, 1) 76%,
+    rgba(207, 207, 207, 1) 93%,
+    rgba(219, 219, 219, 0.7) 100%
+  );
+  border-radius: 10px;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20%;
+    height: 50%;
+    background-color: #2d2d2d;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    opacity: 0.6;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 20%;
+  }
+}
+
+.bulbShine {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60%;
+  height: 60%;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: translateX(-80%) translateY(-80%);
+  border-radius: 50%;
+  opacity: 0.2;
 }
 
 .desc {
