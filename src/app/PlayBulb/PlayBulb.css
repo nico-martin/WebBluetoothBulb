@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .bulbContainer {
@@ -108,4 +109,23 @@
   border-radius: 0.2em;
   padding: 0.3em 0.6em;
   color: var(--c-white);
+}
+
+.colorName {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateY(100%) translateX(-50%);
+  margin-top: var(--spacing-page);
+}
+
+.colorNameLink {
+  font-size: 0.6em;
+  color: #fff;
+
+  a {
+    color: #fff;
+  }
 }

@@ -10,6 +10,9 @@ const PlayBulb = ({
   color: RgbColorI;
   className?: string;
 }) => {
+  const [colorName, setColorname] = React.useState<string>('');
+  const [colorNamePending, setColornamePending] =
+    React.useState<boolean>(false);
   const hex = React.useMemo<string>(
     () => rgbToHex(color.r, color.g, color.b),
     [color]
@@ -17,6 +20,16 @@ const PlayBulb = ({
 
   React.useEffect(() => {
     document.documentElement.style.setProperty('--c-light-bulb', hex);
+  }, [hex]);
+
+  React.useEffect(() => {
+    setColornamePending(true);
+    fetch(`https://api.color.pizza/v1/` + hex.replace('#', ''))
+      .then((response) => response.json())
+      .then((data) => {
+        setColornamePending(false);
+        setColorname(data.colors[0].name);
+      });
   }, [hex]);
 
   return (
@@ -29,6 +42,18 @@ const PlayBulb = ({
         <div className={cn(styles.bulbStand)} />
       </div>
       <pre className={cn(styles.desc)}>{hex}</pre>
+      {!colorNamePending && (
+        <p className={styles.colorName}>
+          {colorName}
+          <br />
+          <span className={styles.colorNameLink}>
+            source:{' '}
+            <a href="https://github.com/meodai/color-names">
+              meodai/color-names
+            </a>
+          </span>
+        </p>
+      )}
     </div>
   );
 };

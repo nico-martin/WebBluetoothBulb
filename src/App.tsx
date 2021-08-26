@@ -8,9 +8,6 @@ import BluetoothButton from './app/BluetoothButton';
 import ColorPicker from './app/ColorPicker';
 import Footer from './app/Footer';
 
-const encoder = new TextEncoder();
-const decoder = new TextDecoder();
-
 const BROWSER_SUPPORT = 'bluetooth' in navigator;
 
 const BLE_UUID = {

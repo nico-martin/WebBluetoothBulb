@@ -2,7 +2,7 @@
   "name": "web-bluetooth-light-bulb",
   "author": "Nico Martin - https://nico.dev",
   "license": "MIT",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A web-based UI to control a PLAYBULB sphere over WebBluetooth",
   "scripts": {
     "dev": "npm run serve:dev & npm run build:dev",
